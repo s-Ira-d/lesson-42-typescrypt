@@ -28,153 +28,228 @@
 
 // c1.attack();
 
-class GameCharacter {
-  name: string;
-  health: number;
-  level: number;
-  experience: number;
+// class GameCharacter {
+//   name: string;
+//   health: number;
+//   level: number;
+//   experience: number;
 
-  constructor(name: string, health: number, level: number, experience: number) {
-    this.name = name;
-    this.health = health;
-    this.level = level;
-    this.experience = experience;
+//   constructor(name: string, health: number, level: number, experience: number) {
+//     this.name = name;
+//     this.health = health;
+//     this.level = level;
+//     this.experience = experience;
+//   }
+
+//   attack(): void {
+//     console.log(`${this.name} атакує!!`);
+//   }
+
+//   takeDamage(amount: number): void {
+//     this.health -= amount;
+
+//     console.log(`${this.name} отримав ${amount} одиниць шкоди!!`);
+
+//     if (this.health === 0) {
+//       console.log(`${this.name} переможений!`);
+//     }
+//   }
+
+//   showStatus(): void {
+//     console.log("Характеристики персонажа");
+//     console.log(`Ім'я: ${this.name}`);
+//     console.log(`Здоров'я: ${this.health}`);
+//     console.log(`Рівень: ${this.level}`);
+//     console.log(`Досвід: ${this.experience}`);
+//   }
+// }
+
+// const hero = new GameCharacter("Knight", 100, 1, 0);
+
+// hero.showStatus();
+
+// hero.attack();
+
+// hero.takeDamage(30);
+
+// hero.showStatus();
+
+// class BankAccount {
+//   public owner: string;
+//   private balance: number;
+
+//   constructor(owner: string, balance: number) {
+//     this.owner = owner;
+
+//     if (balance < 0) {
+//       throw new Error("Баланс не може бути від'ємним!!");
+//     }
+
+//     this.balance = balance;
+//   }
+
+//   get getBalance(): number {
+//     return this.balance;
+//   }
+
+//   deposit(amount: number): void {
+//     if (amount <= 0) {
+//       console.log("Не можна поповнювати рахунок від'ємною сумою або нулем!!");
+//       return;
+//     }
+
+//     this.balance += amount;
+//     console.log(`Рахунок поповнено на ${amount} грн`);
+//   }
+
+//   withdraw(amount: number): void {
+//     if (amount <= 0) {
+//       console.log("Не можна знімати від'ємну суму або нуль!!");
+//       return;
+//     }
+
+//     if (amount > this.balance) {
+//       console.log("Недостатньо коштів на рахунку!!");
+//       return;
+//     }
+
+//     this.balance -= amount;
+//     console.log(`Знято ${amount} грн`);
+//   }
+// }
+
+// const account = new BankAccount("Іван", 1000);
+
+// account.deposit(500);
+// account.withdraw(200);
+
+// console.log("Баланс:", account.getBalance);
+
+// class Character {
+//   name: string;
+//   behavior: string;
+//   health: number;
+
+//   constructor(name: string, behavior: string, health: number) {
+//     this.name = name;
+//     this.behavior = behavior;
+//     this.health = health;
+//   }
+
+//   attack() {
+//     console.log(`${this.name} атакує!`);
+//   }
+
+//   showStatus() {
+//     console.log(`Ім'я: ${this.name}`);
+//     console.log(`Характер: ${this.behavior}`);
+//     console.log(`Здоров'я: ${this.health}`);
+//   }
+// }
+
+// class Warrior extends Character {
+//   useSword() {
+//     console.log(`${this.name} використав меч!!`);
+//   }
+
+//   override attack() {
+//     console.log(`${this.name} атакує мечем!!`);
+//   }
+// }
+
+// class Wizard extends Character {
+//   tellSpell() {
+//     console.log(`${this.name} промовив закляття!!`);
+//   }
+
+//   override attack() {
+//     console.log(`${this.name} атакує магією!!`);
+//   }
+// }
+
+// const warrior = new Warrior("Артур", "Сміливий", 100);
+
+// const wizard = new Wizard("Мерлін", "Мудрий", 80);
+
+// warrior.showStatus();
+// warrior.attack();
+// warrior.useSword();
+
+// wizard.showStatus();
+// wizard.attack();
+// wizard.tellSpell();
+
+class Key {
+  signature: number;
+
+  constructor() {
+    this.signature = Math.floor(Math.random() * 1000);
   }
 
-  attack(): void {
-    console.log(`${this.name} атакує!!`);
-  }
-
-  takeDamage(amount: number): void {
-    this.health -= amount;
-
-    console.log(`${this.name} отримав ${amount} одиниць шкоди!!`);
-
-    if (this.health === 0) {
-      console.log(`${this.name} переможений!`);
-    }
-  }
-
-  showStatus(): void {
-    console.log("Характеристики персонажа");
-    console.log(`Ім'я: ${this.name}`);
-    console.log(`Здоров'я: ${this.health}`);
-    console.log(`Рівень: ${this.level}`);
-    console.log(`Досвід: ${this.experience}`);
+  getSignature(): number {
+    return this.signature;
   }
 }
 
-const hero = new GameCharacter("Knight", 100, 1, 0);
+class Person {
+  private key: Key;
 
-hero.showStatus();
-
-hero.attack();
-
-hero.takeDamage(30);
-
-hero.showStatus();
-
-class BankAccount {
-  public owner: string;
-  private balance: number;
-
-  constructor(owner: string, balance: number) {
-    this.owner = owner;
-
-    if (balance < 0) {
-      throw new Error("Баланс не може бути від'ємним!!");
-    }
-
-    this.balance = balance;
+  constructor(key: Key) {
+    this.key = key;
   }
 
-  get getBalance(): number {
-    return this.balance;
-  }
-
-  deposit(amount: number): void {
-    if (amount <= 0) {
-      console.log("Не можна поповнювати рахунок від'ємною сумою або нулем!!");
-      return;
-    }
-
-    this.balance += amount;
-    console.log(`Рахунок поповнено на ${amount} грн`);
-  }
-
-  withdraw(amount: number): void {
-    if (amount <= 0) {
-      console.log("Не можна знімати від'ємну суму або нуль!!");
-      return;
-    }
-
-    if (amount > this.balance) {
-      console.log("Недостатньо коштів на рахунку!!");
-      return;
-    }
-
-    this.balance -= amount;
-    console.log(`Знято ${amount} грн`);
+  getKey(): Key {
+    return this.key;
   }
 }
 
-const account = new BankAccount("Іван", 1000);
+abstract class House {
+  door: boolean = false;
+  key: Key;
+  tenants: Person[] = [];
 
-account.deposit(500);
-account.withdraw(200);
-
-console.log("Баланс:", account.getBalance);
-
-class Character {
-  name: string;
-  behavior: string;
-  health: number;
-
-  constructor(name: string, behavior: string, health: number) {
-    this.name = name;
-    this.behavior = behavior;
-    this.health = health;
+  constructor(key: Key) {
+    this.key = key;
   }
 
-  attack() {
-    console.log(`${this.name} атакує!`);
+  comeIn(person: Person): void {
+    if (this.door) {
+      this.tenants.push(person);
+      console.log("Людина зайшла до будинку!!");
+    } else {
+      console.log("Двері зачинені!! Увійти неможливо");
+    }
   }
 
-  showStatus() {
-    console.log(`Ім'я: ${this.name}`);
-    console.log(`Характер: ${this.behavior}`);
-    console.log(`Здоров'я: ${this.health}`);
+  abstract openDoor(key: Key): void;
+}
+
+class MyHouse extends House {
+  openDoor(key: Key): void {
+    if (key.getSignature() === this.key.getSignature()) {
+      this.door = true;
+      console.log("Правильний ключ!! Двері відчинено.");
+    } else {
+      this.door = false;
+      console.log("Неправильний ключ!! Двері залишаються зачиненими.");
+    }
   }
 }
 
-class Warrior extends Character {
-  useSword() {
-    console.log(`${this.name} використав меч!!`);
-  }
+const houseKey = new Key();
 
-  override attack() {
-    console.log(`${this.name} атакує мечем!!`);
-  }
-}
+const myHouse = new MyHouse(houseKey);
 
-class Wizard extends Character {
-  tellSpell() {
-    console.log(`${this.name} промовив закляття!!`);
-  }
+const person = new Person(houseKey);
 
-  override attack() {
-    console.log(`${this.name} атакує магією!!`);
-  }
-}
+const stranger = new Person(new Key());
 
-const warrior = new Warrior("Артур", "Сміливий", 100);
+myHouse.comeIn(person);
 
-const wizard = new Wizard("Мерлін", "Мудрий", 80);
+myHouse.openDoor(person.getKey());
 
-warrior.showStatus();
-warrior.attack();
-warrior.useSword();
+myHouse.comeIn(person);
 
-wizard.showStatus();
-wizard.attack();
-wizard.tellSpell();
+myHouse.openDoor(stranger.getKey());
+
+myHouse.comeIn(stranger);
